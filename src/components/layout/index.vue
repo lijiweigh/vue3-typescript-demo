@@ -1,15 +1,11 @@
 <template>
-  <a-layout>
+  <a-layout class="layout">
     <a-layout-sider>
+      <section class="logo-wrap padding-2x">
+        <img class="logo margin-right-4x" src="@/assets/logo.png" alt="">
+        Logo
+      </section>
       <LayoutSider></LayoutSider>
-      <!-- <a-menu
-        mode="inline"
-      >
-        <a-menu-item>菜单项</a-menu-item>
-        <a-sub-menu title="子菜单">
-          <a-menu-item>子菜单项</a-menu-item>
-        </a-sub-menu>
-      </a-menu> -->
     </a-layout-sider>
     <a-layout>
       <a-layout-header>headerrrr</a-layout-header>
@@ -31,3 +27,22 @@ export default defineComponent({
   }
 })
 </script>
+
+<style lang="less" scoped>
+.layout {
+  .ant-layout-header,
+  .ant-layout-sider {
+    background: #fff;
+  }
+}
+.logo-wrap {
+  // color: #fff;
+  font-size: 30px;
+  height: 64px;
+  box-sizing: border-box;
+  .logo {
+    height: 100%;
+  }
+}
+
+</style>

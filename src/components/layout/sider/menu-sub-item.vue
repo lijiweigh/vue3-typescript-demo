@@ -1,7 +1,6 @@
 <template>
-  <template v-for="(route) in routes" :key="route.name">
     <LayoutMenuItem
-      v-if="!route.children"
+      v-if="!route.children || filterHiddenMenu(route).length === 0"
       :route="route"
       :key="route.name"
     ></LayoutMenuItem>
@@ -12,9 +11,8 @@
           {{route.meta.title}}
         </span>
       </template>
-      <MyLayoutMenuSubItem :routes="route.children"></MyLayoutMenuSubItem>
+      <MyLayoutMenuSubItem v-for="item in route.children" :key="item.name" :route="item"></MyLayoutMenuSubItem>
     </a-sub-menu>
-  </template>
 </template>
 
 <script lang="ts">
@@ -28,10 +26,10 @@ export default defineComponent({
     LayoutMenuItem
   },
   props: {
-    routes: {
+    route: {
       // ts 的类型校验需要使用 PropType 强制转换构造函数
       // https://vue3js.cn/docs/zh/guide/typescript-support.html#%E6%B3%A8%E9%87%8A-props
-      type: Array as PropType<RouteRecordNormalized[]>,
+      type: Object as PropType<RouteRecordNormalized>,
       default() {
         return []
       }

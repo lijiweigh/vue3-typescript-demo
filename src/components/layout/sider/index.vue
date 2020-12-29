@@ -5,10 +5,7 @@
     v-model:selectedKeys="selectedKeys"
     @click="handleMenuClick"
   >
-    <!-- <MenuSubItem :routes="routes"></MenuSubItem> -->
-    <a-sub-menu v-for="route in routes" :key="route.name" :title="route.meta.title">
-      <a-menu-item :key="child.name" v-for="child in route.children">{{child.meta.title}}</a-menu-item>
-    </a-sub-menu>
+    <MenuSubItem v-for="route in routes" :key="route.name" :route="route"></MenuSubItem>
   </a-menu>
 </template>
 
@@ -21,7 +18,7 @@ import MenuSubItem from '@/components/layout/sider/menu-sub-item.vue'
 export default defineComponent({
   name: 'MyLayoutSider',
   components: {
-    // MenuSubItem
+    MenuSubItem
   },
   setup(){
     //用于在 setup() 里获取 router 实例 相当于 this.$router
