@@ -71,7 +71,9 @@ export const routes: Array<RouteRecordRaw> = [
         component: () => import('@/views/form/form-detail.vue'),
         meta: {
           title: '表单详情',
+          // 不在左侧菜单中显示
           hideInMenu: true,
+          // 详情页的上一级面包屑是列表页
           preBreadCrumb: {
             path: '/form/form-list',
             breadcrumbName: '表单列表'

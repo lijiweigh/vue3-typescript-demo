@@ -6,8 +6,9 @@ import Antd from 'ant-design-vue'
 import 'ant-design-vue/dist/antd.css'
 import registyIcons from '@/common/utils/import-antdv-icon'
 import '@/common/style/less-variables.less'
-const app = createApp(App)
 
+const app = createApp(App)
+// 注册iocn
 registyIcons(app)
 
 app.use(Antd);

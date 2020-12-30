@@ -1,6 +1,6 @@
 <template>
-  <div class="dashboard">
-    aaadfafdfasfddf
+  <div class="Workbench">
+    Workbench
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'Workbench',
   setup(){
-    console.log("aaa")
+    console.log("Workbench")
   }
 })
 </script>

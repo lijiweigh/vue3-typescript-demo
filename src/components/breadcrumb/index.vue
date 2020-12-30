@@ -23,6 +23,7 @@ export default defineComponent({
     const routes = computed(() => {
       const result: BreadCrumbData[] = []
       $route.matched.forEach(route => {
+        // 如详情页，会把列表页的面包屑信息放在 preBreadCrumb
         if(route.meta.preBreadCrumb) {
           result.push(route.meta.preBreadCrumb)
         }

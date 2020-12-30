@@ -61,7 +61,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, ref } from 'vue'
+import { defineComponent, reactive } from 'vue'
 import { CreateFormReq } from '@/types/form'
 import { useForm } from '@ant-design-vue/use'
 import { message } from 'ant-design-vue'

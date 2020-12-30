@@ -10,7 +10,12 @@
         <template #overlay>
           <a-menu @click="handleClickMenu">
             <a-menu-item key="abc">
-
+              <AppleOutlined />
+              这是安卓
+            </a-menu-item>
+            <a-menu-item key="abc">
+              <AndroidOutlined />
+              这是苹果
             </a-menu-item>
             <a-menu-item key="logout">
               <span>
