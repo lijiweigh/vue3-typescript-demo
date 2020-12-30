@@ -1,8 +1,14 @@
-import { HomeOutlined } from '@ant-design/icons-vue'
+import {
+  HomeOutlined,
+  UserOutlined,
+  LogoutOutlined
+} from '@ant-design/icons-vue'
 import { App } from 'vue'
 
 const icons: any[] = [
-  HomeOutlined
+  HomeOutlined,
+  UserOutlined,
+  LogoutOutlined
 ]
 
 export default function registyIcons(app: App) {

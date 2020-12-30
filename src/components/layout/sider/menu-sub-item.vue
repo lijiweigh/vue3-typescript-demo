@@ -1,6 +1,6 @@
 <template>
     <LayoutMenuItem
-      v-if="!route.children || filterHiddenMenu(route).length === 0"
+      v-if="!route.children || filterChildren.length === 0"
       :route="route"
       :key="route.name"
     ></LayoutMenuItem>
@@ -11,12 +11,12 @@
           {{route.meta.title}}
         </span>
       </template>
-      <MyLayoutMenuSubItem v-for="item in route.children" :key="item.name" :route="item"></MyLayoutMenuSubItem>
+      <MyLayoutMenuSubItem v-for="item in filterChildren" :key="item.name" :route="item"></MyLayoutMenuSubItem>
     </a-sub-menu>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { computed, defineComponent, PropType, toRef } from 'vue'
 import { RouteRecordNormalized } from 'vue-router'
 import LayoutMenuItem from './menu-item.vue'
 
@@ -30,20 +30,21 @@ export default defineComponent({
       // ts 的类型校验需要使用 PropType 强制转换构造函数
       // https://vue3js.cn/docs/zh/guide/typescript-support.html#%E6%B3%A8%E9%87%8A-props
       type: Object as PropType<RouteRecordNormalized>,
-      default() {
-        return []
+      // 如果这里使用 default() {} 这种形式， 下面的 toRef() 无法对第二个参数进行正确的类型判断。。。。。
+      default: () => {
+        return {}
       }
-    }
+    },
   },
-  setup(){
-    const filterHiddenMenu = (route: RouteRecordNormalized) => {
-      return route.children.filter(child => {
-        return !child?.meta?.hiddenInMenu
+  setup(props){
+    const filterChildren = computed(() => {
+      return (toRef(props, 'route').value as RouteRecordNormalized).children.filter(child => {
+        return !child?.meta?.hideInMenu
       })
-    }
+    })
 
     return {
-      filterHiddenMenu
+      filterChildren
     }
   }
 })

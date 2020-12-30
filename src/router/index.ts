@@ -7,6 +7,7 @@ export const routes: Array<RouteRecordRaw> = [
     name: 'dashboard',
     path: '/dashboard',
     component: Layout,
+    redirect: '/dashboard/workbench',
     meta: {
       title: 'dashboard',
       icon: 'HomeOutlined'
@@ -38,6 +39,47 @@ export const routes: Array<RouteRecordRaw> = [
       },
     ]
   },
+  {
+    name: 'form',
+    path: '/form',
+    component: Layout,
+    redirect: '/form/form-list',
+    meta: {
+      title: '表单页',
+      icon: 'HomeOutlined'
+    },
+    children: [
+      {
+        name: 'createForm',
+        path: 'create',
+        component: () => import('@/views/form/create.vue'),
+        meta: {
+          title: '创建页表单'
+        }
+      },
+      {
+        name: 'formList',
+        path: 'form-list',
+        component: () => import('@/views/form/form-list.vue'),
+        meta: {
+          title: '表单列表'
+        }
+      },
+      {
+        name: 'formDetail',
+        path: 'form-detail/:id',
+        component: () => import('@/views/form/form-detail.vue'),
+        meta: {
+          title: '表单详情',
+          hideInMenu: true,
+          preBreadCrumb: {
+            path: '/form/form-list',
+            breadcrumbName: '表单列表'
+          }
+        }
+      }
+    ]
+  }
 ]
 
 const router = createRouter({

@@ -254,3 +254,7 @@
 .text-center {
   text-align: center;
 }
+
+.page-header {
+  background-color: #fff;
+}
