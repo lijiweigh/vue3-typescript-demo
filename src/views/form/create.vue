@@ -44,7 +44,7 @@
             </a-radio>
           </a-radio-group>
         </a-form-item>
-        <a-form-item label="Activity form" v-bind="validateInfos.desc">
+        <a-form-item label="Desc" v-bind="validateInfos.desc">
           <a-input v-model:value="formData.desc" type="textarea" />
         </a-form-item>
         <a-form-item :wrapper-col="{ span: 14, offset: 4 }">
